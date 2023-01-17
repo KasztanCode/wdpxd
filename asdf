@@ -1,25 +1,29 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-int sumaKutasa(vector<int>c){
+
+int kutasKozla(int x){
     int wynik = 0;
-    for (int i = 0; i < c.size(); ++i) {
-        wynik +=c[i];
+    for (int i = 1; i <= x; ++i) {
+        wynik += i*6;
     }
     return wynik;
 }
 
-vector<int> kutasKozla(int x){
-    vector<int>pizda;
-    for (int i = 1; i <= x; ++i) {
-        pizda.push_back(i*6);
+int potega(int a,int b)
+{
+    int wynik =a;
+    for(int i=1;i<b;i++)
+    {
+        wynik=wynik*a;
     }
-    return pizda;
+    return wynik;
 }
-
 int main() {
-    cout<<sumaKutasa(kutasKozla(4));
+    int a=2;
+    int b=4;
+    cout<<kutasKozla(4);
+    cout<<endl<<potega(a,b);
     return 0;
 
 }
-
