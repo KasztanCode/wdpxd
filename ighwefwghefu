@@ -1,0 +1,39 @@
+select kreatura.nazwa, kreatura.dataUr, zasob.nazwa from kreatura
+inner join ekwipunek on kreatura.idKreatury = ekwipunek.idKreatury
+inner join zasob on ekwipunek.idZasobu = zasob.idZasobu where year(dataUr) <1771 or year(dataUr) >1770;
+
+select kreatura.nazwa from kreatura
+inner join ekwipunek on kreatura.idKreatury = ekwipunek.idKreatury
+inner join zasob on ekwipunek.idZasobu = zasob.idZasobu where zasob.rodzaj = 'jedzenie' order by dataUr asc limit 5;
+
+select kreatura.rodzaj, avg(zasob.waga*zasob.ilosc) from kreatura
+inner join ekwipunek on kreatura.idKreatury = ekwipunek.idKreatury 
+inner join zasob on zasob.idZasobu = ekwipunek.idZasobu
+where kreatura.rodzaj !='malpa' and kreatura.rodzaj != "waz" and ekwipunek.ilosc < 30
+group by kreatura.rodzaj; 
+
+foreign key (id_wykonawcy) references postac1(id_postaci) on delete cascade ,
+
+
+create table Benefit(id_benefitu int primary key,nazwa varchar(30) not null,cena float,opis longtext,rodzaj enum('lekaz','sport','przedszkole'))
+
+create table Uzyktownik(id_uzytkownika int primary key not null,rodzaj enum('pracownik','prezes','rodzina') default 'pracownik',imie varchar(32) not null,nazwisko varchar(20) not null ,zarobki int unsigned default 2000, dataUr date ,id_benefitu int)
+alter table Uzyktownik add foreign key(id_benefitu) references Benefit(id_benefitu) on delete cascade;
+
+SELECT *
+INTO SecondDB.TableName
+FROM FirstDatabase.TableName
+
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition; 
+
+
+alter table Uzyktownik alter column rodzaj set default 'prezes'
+
+update Benefit set nazwa = 'granie' where nazwa like '%an%';
+https://www.w3schools.com/sql/sql_like.asp
+delete from Benefit where cena > 67;
+
+select * from zawodnik where klub is not null and year(dataUr) <1771 or year(dataUr) >1770;
