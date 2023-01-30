@@ -1,0 +1,90 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool zad3(int n){
+    if (n <= 0 || n == 1 ){
+        return false;
+    }
+    for (int i = 2; i < n; ++i) {
+        if (n%i==0){
+            return false;
+        }
+    }
+    return true;
+}
+
+int zad4(int arr[], int size){
+    int temp = 0;
+    int solution =0;
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] % 2 !=0){
+            temp = arr[i];
+            if (temp > solution){
+                solution =temp;
+            }
+        }
+    }
+    return solution;
+}
+bool zad6(int n){
+    vector<int>digits;
+    while(n != 0){
+        digits.push_back(n%10);
+        n/=10;
+    }
+    if (digits[0]==digits[1]){
+        return true;
+    }
+    return false;
+}
+
+int main() {
+//zad 2
+    cout <<"zad 2"<< endl;
+    int zad2Solution = 0;
+    for (int i = -100; i <0 ; ++i) {
+        if (i%2 !=0){
+            zad2Solution +=i;
+        }
+    }
+    cout << zad2Solution << endl;
+    //zad 2 end
+
+    //zad3
+    cout <<"zad 3"<< endl;
+    cout << zad3(97) << endl;
+    //zad 3 end
+
+    //zad4
+    cout <<"zad 4"<< endl;
+    int arr[] = {1,2,3,4,10,5,6,7,8,9,11,12};
+    int arrSize = 12;
+    cout << zad4(arr,arrSize);
+    cout << endl;
+    //zad4 end
+
+    //zad5
+    cout <<"zad 5"<< endl;
+    int i = 0;
+    int zad5Number;
+    vector<int>zad5Solution;
+    while(i < 10){
+        cin >> zad5Number;
+        zad5Solution.push_back(zad5Number*zad5Number);
+        i++;
+    }
+    for (int j = 0; j < 10; ++j) {
+        cout << zad5Solution[j] << " ";
+    }
+    cout << endl;
+    //zad5 end
+
+    //zad6
+    cout <<"zad 6"<< endl;
+    cout << zad6(343454);
+
+
+
+    return 0;
+}
