@@ -76,7 +76,7 @@ int main() {
             break;
         }
         cin >> numberZad5;
-        if (numberZad5%3==0){
+        if (numberZad5%3==0 && numberZad5 !=0){
             withoutDevidableBy3.push_back(numberZad5);
         }
         j++;
